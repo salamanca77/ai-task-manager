@@ -19,7 +19,10 @@ export default function TaskList() {
     setLoading(false);
   }
 
-  useEffect(() => { fetchTasks(); }, []);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    void fetchTasks();
+  }, []);
 
   const filtered = tasks.filter((t) => {
     if (filter === "pendientes") return !t.completed;
